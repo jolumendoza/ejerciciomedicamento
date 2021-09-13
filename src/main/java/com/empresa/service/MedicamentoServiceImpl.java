@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.empresa.entity.Alumno;
 import com.empresa.entity.Medicamento;
 import com.empresa.repository.MedicamentoRepository;
 
@@ -30,6 +31,23 @@ public class MedicamentoServiceImpl implements MedicamentoService {
 	public Optional<Medicamento> ObtenerPorID(int IdMedicamento) {
 		return repository.findById(IdMedicamento);
 	}
+
+	@Override
+	public Optional<Medicamento> buscaPorId(int idMedicamento) {
+			return repository.findById(idMedicamento);
+	}
+
+	@Override
+	public   List<Medicamento> buscaPorNombre(String nombre) {
+		return repository.findByNombreLike(nombre);
+	}
+ 
+	
+	@Override
+	public   List<Medicamento> buscaPorStock(int stock) {
+		return repository.findByStock(stock);
+	}
+ 
 
 
 	
